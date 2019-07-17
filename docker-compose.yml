@@ -1,0 +1,18 @@
+version: '2'
+services:
+  xonotic-insta:
+    image: luxsource/xonotic
+    ports:
+      - "26001:26001/udp"
+    volumes:
+      - ./instagib.cfg:/root/.xonotic/data/instagib.cfg:ro
+    entrypoint: /usr/bin/xonotic-dedicated +serverconfig instagib.cfg -sessionid instagib +port 26001
+    restart: always
+  xonotic-tdm:
+    image: luxsource/xonotic
+    ports:
+      - "26000:26000/udp"
+    volumes:
+      - ./tdm.cfg:/root/.xonotic/data/tdm.cfg:ro
+    entrypoint: /usr/bin/xonotic-dedicated +serverconfig tdm.cfg -sessionid tdm +port 26000
+    restart: always
